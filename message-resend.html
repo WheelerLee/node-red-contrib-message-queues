@@ -1,0 +1,52 @@
+<script type="text/javascript">
+  RED.nodes.registerType('Message Resend', {
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: "" },
+      time: { value: "" },
+      reset: { value: false },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "resend.svg",
+    label: function () {
+      return this.name || "Message Resend";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="Message Resend">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-prefix"><i class="fa fa-clock-o"></i> 重发间隔</label>
+    <input type="text" id="node-input-time" placeholder="1,2,3">
+  </div>
+  <div class="form-row">
+    <label for="node-input-reset"><i class="fa fa-undo"></i> 重置未完成</label>
+    <input type="checkbox" id="node-input-reset">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="Message Resend">
+  <p>消息重发</p>
+
+  <p>
+    <dl class="message-properties">
+      <dt>重发间隔<span class="property-type">string</span></dt>
+      <dd>
+        消息重发的间隔时间，用英文逗号隔开，单位为秒
+        <br/>
+        例如: 1,2,3 表示1秒后，2秒后，3秒后重发
+      </dd>
+      <dt>重置未完成<span class="property-type">boolean</span></dt>
+      <dd>
+        是否重置未完成的消息
+        重置表示如果上一条消息未完成，新消息会把上一条未发送的消息取消
+      </dd>
+    </dl> 
+  </p>
+</script>

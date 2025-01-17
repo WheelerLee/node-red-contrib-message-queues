@@ -1,0 +1,30 @@
+{
+  "name": "node-red-contrib-message-queues",
+  "version": "1.0.4",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WheelerLee/node-red-contrib-message-queues.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [ "node-red" ],
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "Message Queues": "message-queues.js",
+      "Message Resend": "message-resend.js"
+    }
+  },
+  "author": "",
+  "license": "AGPL-3.0",
+  "files": [
+    "icons",
+    "message-queues.html",
+    "message-queues.js",
+    "message-resend.html",
+    "message-resend.js"
+  ]
+}

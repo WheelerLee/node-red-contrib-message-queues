@@ -1,0 +1,26 @@
+<p>Simple Message Queue</p>
+<p>
+<h3>Input</h3>
+<dl class="message-properties">
+  <dt>type<span class="property-type">string</span></dt>
+  <dd>
+    <ul>
+      <li>add: Add a message to the queue</li>
+      <li>consume: Consume a message, indicating that the message has been processed, and automatically deliver the next
+        message</li>
+    </ul>
+  </dd>
+  <dt>payload<span class="property-type">string | number</span></dt>
+  <dd> The content of the message, either the newly added message or the consumed message </dd>
+  <dt>index<span class="property-type">number</span></dt>
+  <dd> Optional, the position of the message in the queue, starting from 0. By default, it is added to the end of the
+    queue </dd>
+</dl>
+</p>
+<p>
+<h3>Output</h3>
+<dl class="message-properties">
+  <dt>payload<span class="property-type">string | number</span></dt>
+  <dd> The content of the message, indicating that the message has started being consumed </dd>
+</dl>
+</p>
