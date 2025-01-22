@@ -24,3 +24,38 @@
       <input type="text" id="node-input-prefix" placeholder="Prefix">
   </div> -->
 </script>
+
+<script type="text/x-red" data-help-name="Message Queues">
+  <p>简单的消息队列</p>
+
+  <p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+      <dt>type<span class="property-type">string</span></dt>
+      <dd>
+        <ul>
+          <li>add: 往队列添加一条信息</li>
+          <li>consume: 消费一条消息，表示该消息已经处理完成，自动下发下一条消息</li>
+        </ul>
+      </dd>
+      <dt>payload<span class="property-type">string | number</span></dt>
+      <dd>
+        消息内容，添加的新消息或者消费完成的消息
+      </dd>
+      <dt>index<span class="property-type">number</span></dt>
+      <dd>
+        可选，消息在队列中的位置，从0开始。默认在队列末尾添加
+      </dd>
+    </dl> 
+  </p>
+
+  <p>
+    <h3>输出</h3>
+    <dl class="message-properties">
+      <dt>payload<span class="property-type">string | number</span></dt>
+      <dd>
+        消息内容，表示开始消费该消息
+      </dd>
+    </dl> 
+  </p>
+</script>
