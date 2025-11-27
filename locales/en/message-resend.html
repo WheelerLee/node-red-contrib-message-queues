@@ -1,0 +1,52 @@
+<script type="text/javascript">
+  RED.nodes.registerType('Message Resend', {
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: "" },
+      time: { value: "" },
+      reset: { value: false },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "resend.svg",
+    label: function () {
+      return this.name || "Message Resend";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="Message Resend">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-prefix"><i class="fa fa-clock-o"></i> Resend Interval</label>
+    <input type="text" id="node-input-time" placeholder="1,2,3">
+  </div>
+  <div class="form-row">
+    <label for="node-input-reset"><i class="fa fa-undo"></i> Reset Unfinished</label>
+    <input type="checkbox" id="node-input-reset">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="Message Resend">
+  <p>Message Resend</p>
+
+  <p>
+    <dl class="message-properties">
+      <dt>Resend Interval<span class="property-type">string</span></dt>
+      <dd>
+        The interval time for resending messages, separated by commas, in seconds
+        <br/>
+        For example: 1,2,3 means 1 second after, 2 seconds after, 3 seconds after resending
+      </dd>
+      <dt>Reset Unfinished<span class="property-type">boolean</span></dt>
+      <dd>
+        Whether to reset the unfinished messages
+        Reset means that if the previous message is not completed, the new message will cancel the previous unsent message
+      </dd>
+    </dl> 
+  </p>
+</script>

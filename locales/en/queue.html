@@ -1,0 +1,69 @@
+<script type="text/javascript">
+  RED.nodes.registerType('Queue', {
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: "" },
+      autoConsumeTime: { value: 0 }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "queue.svg",
+    label: function () {
+      return this.name || "Queue";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="Queue">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-autoConsumeTime"><i class="fa fa-tag"></i> Auto Consume Time</label>
+    <input type="text" id="node-input-autoConsumeTime" placeholder="Auto Consume Time">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="Queue">
+  <p>Queue</p>
+  <dl>
+    <dd>1. Store the received messages in the order of first in, first out, and start outputting the first message by default. The output will only continue after the message that has been output has been consumed</dd>
+    <dd>2. You can use the Consumer node to consume messages, indicating that the topic of the message has been consumed, and the next message can be output</dd>
+    <dd>3. When autoConsumeTime is 0, it means that automatic consumption is not required, and manual consumption is needed</dd>
+    <dd>4. When autoConsumeTime is not 0, automatic consumption and consumption through Consumer are both allowed</dd>
+  </dl>
+  <p>
+    <h3>Configuration</h3>
+    <dl class="message-properties">
+      <dt>autoConsumeTime<span class="property-type">number</span></dt>
+      <dd>
+        The time for automatic consumption of messages, in seconds. If it is 0, automatic consumption is not required. If it is 10, it means that the message will be automatically consumed after 10 seconds
+      </dd>
+    </dl>
+  </p>
+  <p>
+    <h3>Input</h3>
+    <dl class="message-properties">
+      <dt>topic<span class="property-type">string</span></dt>
+      <dd>
+        The topic of the message, consume using this topic
+      </dd>
+      <dt>index<span class="property-type">number</span></dt>
+      <dd>
+        Optional, the position of the message in the queue, starting from 0. The default is to add it to the end of the queue
+      </dd>
+    </dl> 
+  </p>
+
+  <p>
+    <h3>Output</h3>
+    <dl class="message-properties">
+      <dt>payload<span class="property-type">any</span></dt>
+      <dd>
+        Message content, indicating that the message is about to be consumed
+      </dd>
+    </dl> 
+  </p>
+</script>

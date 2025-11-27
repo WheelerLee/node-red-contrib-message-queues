@@ -1,6 +1,33 @@
+<script type="text/javascript">
+  RED.nodes.registerType('Message Queues', {
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: "" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "queues.svg",
+    label: function () {
+      return this.name || "Message Queues";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="Message Queues">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <!-- <div class="form-row">
+      <label for="node-input-prefix"><i class="fa fa-tag"></i> Prefix</label>
+      <input type="text" id="node-input-prefix" placeholder="Prefix">
+  </div> -->
+</script>
+
 <script type="text/x-red" data-help-name="Message Queues">
   <p>简单的消息队列</p>
-
+  <h2>不要使用该node，请使用Queue+Consumer节点代替</h2>
   <p>
     <h3>输入</h3>
     <dl class="message-properties">

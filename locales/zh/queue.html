@@ -1,0 +1,70 @@
+<script type="text/javascript">
+  RED.nodes.registerType('Queue', {
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: "" },
+      autoConsumeTime: { value: 0 }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "queue.svg",
+    label: function () {
+      return this.name || "Queue";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="Queue">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-autoConsumeTime"><i class="fa fa-tag"></i> 自动消费时间</label>
+    <input type="text" id="node-input-autoConsumeTime" placeholder="自动消费时间">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="Queue">
+  <p>消息队列</p>
+  <dl>
+    <dd>1. 将接受的消息进行存储，按照先进先出的顺序开始输出，默认会输出第一条消息，只有当输出的消息消费完成后才会进行后面的输出</dd>
+    <dd>2. 可以使用Consumer节点来消费消息，将告知Queue这个topic消费完成，可以输出下一个消息</dd>
+    <dd>3. 当autoConsumeTime为0时，表示不自动消费，需要手动消费</dd>
+    <dd>4. 当autoConsumeTime不为0时，自动消费和通过Consumer消费都可以</dd>
+  </dl>
+  <p>
+    <h3>配置</h3>
+    <dl class="message-properties">
+      <dt>autoConsumeTime<span class="property-type">number</span></dt>
+      <dd>
+        消息自动消费的时间，单位为秒，如果为0，则不自动消费。
+        如果为10，则表示10秒后自动消费消息。
+      </dd>
+    </dl>
+  </p>
+  <p>
+    <h3>输入</h3>
+    <dl class="message-properties">
+      <dt>topic<span class="property-type">string</span></dt>
+      <dd>
+        消息的主体，消费使用该主题即可
+      </dd>
+      <dt>index<span class="property-type">number</span></dt>
+      <dd>
+        可选，消息在队列中的位置，从0开始。默认在队列末尾添加
+      </dd>
+    </dl> 
+  </p>
+
+  <p>
+    <h3>输出</h3>
+    <dl class="message-properties">
+      <dt>payload<span class="property-type">any</span></dt>
+      <dd>
+        消息内容，表示开始消费该消息
+      </dd>
+    </dl> 
+  </p>
+</script>

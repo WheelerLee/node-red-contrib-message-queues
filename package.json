@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-message-queues",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -15,7 +15,9 @@
     "version": ">=2.0.0",
     "nodes": {
       "Message Queues": "message-queues.js",
-      "Message Resend": "message-resend.js"
+      "Message Resend": "message-resend.js",
+      "Queue": "queue.js",
+      "Consumer": "consumer.js"
     }
   },
   "author": "",
@@ -25,6 +27,11 @@
     "message-queues.html",
     "message-queues.js",
     "message-resend.html",
-    "message-resend.js"
+    "message-resend.js",
+    "queue.html",
+    "queue.js",
+    "consumer.html",
+    "consumer.js",
+    "locales"
   ]
 }
