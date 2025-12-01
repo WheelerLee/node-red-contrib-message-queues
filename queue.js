@@ -1,4 +1,4 @@
-const { bus } = require("./index");
+const { bus, deepClone } = require("./index");
 
 module.exports = function (RED) {
   function QueueNode(config) {
@@ -18,7 +18,7 @@ module.exports = function (RED) {
           currentQueue = queues.shift();
           // 有下一条消息，下发下一条消息
           context.set('current_queue', currentQueue);
-          node.send(currentQueue);
+          node.send(deepClone(currentQueue));
         } else {
           // 没有下一条消息，停止当前正在处理的消息
           currentQueue = null;
@@ -54,7 +54,7 @@ module.exports = function (RED) {
         // 当前没正在处理的消息，则下发queues的第一条消息
         currentQueue = queues.shift();
         context.set('current_queue', currentQueue);
-        node.send(currentQueue);
+        node.send(deepClone(currentQueue));
       }
       context.set('queues', queues);
 
